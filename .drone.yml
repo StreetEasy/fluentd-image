@@ -1,0 +1,27 @@
+kind: pipeline
+name: images
+type: kubernetes
+
+steps:
+- name: build
+  image: plugins/docker
+  environment:
+  settings:
+    purge: false
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    repo: zillownyc/fluentd
+    build_args:
+    - FLUENTD_VERSION=v1.4.2-debian-2.0
+    tags:
+    - latest
+    - "1.4.2"
+    - "1.4"
+
+trigger:
+  event:
+  - push
+  branch:
+  - master
