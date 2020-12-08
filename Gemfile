@@ -12,4 +12,9 @@ gem "fluent-plugin-kubernetes_metadata_filter", "~> 2.1.4"
 gem "fluent-plugin-systemd", "~> 1.0.1"
 gem "fluent-plugin-s3", "~> 1.1.6"
 gem "aws-sdk-s3", "~> 1.0"
+gem "ffi-rzmq", "~> 2.0.7"
 gem "ffi"
+
+source "https://artifactory.zgtools.net/artifactory/api/gems/devex-gems/" do
+  gem "fluent-plugin-zillow-logging", "~> 0.2"
+end
