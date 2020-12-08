@@ -17,8 +17,9 @@ steps:
     - FLUENTD_VERSION=v1.4.2-debian-2.0
     tags:
     - latest
-    - "1.4.2"
-    - "1.4"
+    - "1.0.0"
+    - "1.0"
+    - "1"
 
 trigger:
   event:

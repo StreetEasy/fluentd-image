@@ -7,7 +7,7 @@ ENV GEM_PATH /fluentd/vendor/bundle/ruby/2.6.0
 ENV GEM_HOME /fluentd/vendor/bundle/ruby/2.6.0
 ENV FLUENTD_DISABLE_BUNDLER_INJECTION 1
 COPY Gemfile Gemfile.lock /fluentd/
-RUN buildDeps="sudo make gcc g++ libc-dev libffi-dev ca-certificates" \
+RUN buildDeps="sudo make gcc g++ libc-dev libffi-dev ca-certificates libjemalloc1 libzmq5-dev" \
      && apt-get update \
      && apt-get upgrade -y \
      && apt-get install \
@@ -20,7 +20,7 @@ RUN buildDeps="sudo make gcc g++ libc-dev libffi-dev ca-certificates" \
     apt-get purge -y --auto-remove \
                   -o APT::AutoRemove::RecommendsImportant=false \
                   $buildDeps \
- && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/lib/apt/lists/* \
     && gem sources --clear-all \
     && rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
 RUN touch /fluentd/etc/disable.conf
